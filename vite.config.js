@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/neoprep/', // 👈 ADD THIS (repo name)
+  base: '/neoprep/',
 
   plugins: [
     react(),
