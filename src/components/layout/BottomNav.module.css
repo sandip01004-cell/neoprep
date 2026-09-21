@@ -1,0 +1,110 @@
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width);
+  height: calc(var(--bottom-nav-height) + var(--safe-area-bottom));
+  padding-bottom: var(--safe-area-bottom);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  background: rgba(22, 22, 31, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-subtle);
+  z-index: 100;
+}
+
+/* Regular tab button */
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 0;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.tab:hover { color: var(--text-secondary); }
+
+.tab.active { color: var(--accent-violet-light); }
+
+.tab.active .tabIcon {
+  transform: scale(1.1);
+}
+
+.tab.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 2px;
+  background: var(--accent-violet-light);
+  border-radius: 0 0 4px 4px;
+}
+
+.tabIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-normal);
+}
+
+.tabLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* FAB (Log button) */
+.fab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.fabInner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-violet), #5b21b6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.5);
+  transition: transform var(--transition-slow), box-shadow var(--transition-normal);
+  /* Slightly raised above nav */
+  margin-top: -16px;
+}
+
+.fab:hover .fabInner {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(124, 58, 237, 0.65);
+}
+
+.fab:active .fabInner {
+  transform: scale(0.94);
+}
+
+.fabLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--accent-violet-light);
+  letter-spacing: 0.02em;
+}

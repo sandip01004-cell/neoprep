@@ -1,0 +1,79 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 13, 20, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeIn 200ms ease forwards;
+  overflow: hidden;
+}
+
+/* Central card */
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  box-shadow: 0 0 60px rgba(124, 58, 237, 0.3), var(--shadow-card);
+  animation: celebrationScale 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  position: relative;
+  z-index: 2;
+  max-width: 300px;
+  text-align: center;
+}
+
+@keyframes celebrationScale {
+  0%   { transform: scale(0.7); opacity: 0; }
+  70%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-top: var(--space-sm);
+  background: linear-gradient(135deg, #fbbf24, #f472b6, var(--accent-violet-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.highlight {
+  color: var(--accent-violet-light);
+  font-weight: 700;
+}
+
+.dismissBtn {
+  margin-top: var(--space-sm);
+}
+
+/* Confetti pieces */
+.piece {
+  position: fixed;
+  top: -20px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+  z-index: 1;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.rect {
+  border-radius: 2px;
+}

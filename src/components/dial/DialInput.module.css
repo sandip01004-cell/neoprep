@@ -1,0 +1,87 @@
+.dialWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.svg {
+  width: 180px;
+  height: 180px;
+  cursor: grab;
+  touch-action: none;
+  transition: filter var(--transition-fast);
+}
+
+.svg:active {
+  cursor: grabbing;
+  filter: drop-shadow(0 0 16px rgba(124, 58, 237, 0.4));
+}
+
+.filledArc {
+  transition: none; /* instant during drag; animate only on preset */
+}
+
+.filledArc.animating {
+  transition: stroke-dashoffset 400ms cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.thumb {
+  transition: cx 100ms ease, cy 100ms ease;
+}
+
+.valueText {
+  font-family: var(--font-display);
+  font-weight: 700;
+  fill: var(--text-primary);
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.unitText {
+  fill: var(--text-muted);
+  dominant-baseline: middle;
+  pointer-events: none;
+  font-weight: 500;
+}
+
+.pctText {
+  fill: var(--accent-violet-light);
+  dominant-baseline: middle;
+  pointer-events: none;
+  font-weight: 600;
+}
+
+/* Preset buttons row */
+.presets {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.preset {
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.preset:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.4);
+  color: var(--accent-violet-light);
+  transform: translateY(-1px);
+}
+
+.preset:active {
+  transform: scale(0.95);
+}

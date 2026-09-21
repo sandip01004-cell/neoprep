@@ -1,0 +1,208 @@
+.page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  gap: var(--space-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+}
+
+.title {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Step indicator */
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.step {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: all var(--transition-normal);
+  flex-shrink: 0;
+}
+
+.stepActive {
+  background: var(--accent-violet);
+  border-color: var(--accent-violet);
+  color: white;
+  box-shadow: 0 0 12px rgba(124,58,237,0.4);
+}
+
+.stepLine {
+  flex: 1;
+  height: 2px;
+  background: var(--border-subtle);
+  transition: background var(--transition-normal);
+}
+
+.stepLineDone { background: var(--accent-violet); }
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  overflow-y: auto;
+}
+
+/* Subject chips */
+.subjectList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.subjectChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.subjectChipName { font-weight: 600; }
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.removeBtn:hover { color: var(--accent-rose); }
+
+.addRow {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.addBtn { flex-shrink: 0; }
+
+/* Settings cards (step 2) */
+.settingCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.settingCardHeader {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.metricRow {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.metricBtn {
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all var(--transition-fast);
+}
+
+.metricBtnActive {
+  background: rgba(124,58,237,0.15);
+  border-color: var(--accent-violet);
+  color: var(--accent-violet-light);
+}
+
+.targetRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.targetLabel {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.optional {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.targetInput {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 130px;
+}
+
+.targetInput .input {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+}
+
+.unitLabel {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.examRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.navRow {
+  display: flex;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-md);
+}
