@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1e0a3c"/>
+      <stop offset="100%" stop-color="#0d0d14"/>
+    </radialGradient>
+    <linearGradient id="nGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="100" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="190" fill="none" stroke="#a855f7" stroke-width="4" opacity="0.4"/>
+  <circle cx="256" cy="256" r="165" fill="rgba(168,85,247,0.08)"/>
+  <text x="256" y="340" font-family="Arial Black, Impact, sans-serif" font-size="240" font-weight="900"
+        text-anchor="middle" fill="url(#nGrad)" filter="url(#glow)">N</text>
+</svg>
