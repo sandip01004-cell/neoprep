@@ -8,6 +8,8 @@ import LogSession from './screens/LogSession';
 import BottomNav from './components/layout/BottomNav';
 import TopBar from './components/layout/TopBar';
 import CelebrationOverlay from './components/ui/CelebrationOverlay';
+import InstallPrompt from './components/pwa/InstallPrompt';
+import UpdateNotification from './components/pwa/UpdateNotification';
 
 // ── Inner app (has access to context) ─────────────────────────────────
 function Inner() {
@@ -78,6 +80,10 @@ function Inner() {
           onDone={() => dispatch({ type: 'CLEAR_SESSION_META' })}
         />
       )}
+
+      {/* PWA overlays */}
+      <InstallPrompt />
+      <UpdateNotification />
     </div>
   );
 }
