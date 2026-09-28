@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { motion } from 'framer-motion';
 import { useApp } from '../../context/AppContext';
 import ProgressBar from '../ui/ProgressBar';
 import styles from './SubjectCard.module.css';
@@ -6,17 +7,23 @@ import styles from './SubjectCard.module.css';
 /**
  * Subject card showing today's progress vs target.
  * Memoized — only re-renders when this subject's data changes.
+ * Uses Framer Motion for staggered entrance + interactive hover.
  */
-const SubjectCard = memo(function SubjectCard({ subject, onLog }) {
+const SubjectCard = memo(function SubjectCard({ subject, onLog, index = 0 }) {
   const { subjectProgress } = useApp();
   const { value, target, pct, unitLabel } = subjectProgress(subject.id);
 
   const done = pct >= 100;
 
   return (
-    <div
+    <motion.div
       className={`${styles.card} ${done ? styles.done : ''}`}
       style={{ '--subject-color': subject.color }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay: index * 0.08, ease: 'easeOut' }}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      whileTap={{ scale: 0.98 }}
     >
       {/* Color strip */}
       <div className={styles.strip} />
@@ -60,7 +67,7 @@ const SubjectCard = memo(function SubjectCard({ subject, onLog }) {
           </span>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 });
 

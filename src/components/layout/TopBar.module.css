@@ -1,12 +1,11 @@
 .topBar {
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   width: 100%;
-  max-width: var(--max-width);
   height: var(--top-bar-height);
-  padding: 0 var(--space-md);
+  padding: 0 var(--content-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,4 +75,16 @@
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+}
+
+/* ═══ Responsive ═══ */
+@media (min-width: 768px) {
+  .logo { font-size: 1.35rem; }
+  .greeting { font-size: 0.85rem; }
+  .countdownNum { font-size: 1.05rem; }
+}
+
+@media (min-width: 1024px) {
+  .logo { font-size: 1.45rem; }
+  .greeting { font-size: 0.9rem; }
 }

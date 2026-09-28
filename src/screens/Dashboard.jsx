@@ -81,8 +81,8 @@ export default function Dashboard({ onOpenLog }) {
       <div className={styles.cardsSection}>
         <h2 className={styles.sectionTitle}>Subjects</h2>
         <div className={styles.cardGrid}>
-          {subjects.map(s => (
-            <SubjectCard key={s.id} subject={s} onLog={openLogFor} />
+          {subjects.map((s, i) => (
+            <SubjectCard key={s.id} subject={s} onLog={openLogFor} index={i} />
           ))}
         </div>
       </div>

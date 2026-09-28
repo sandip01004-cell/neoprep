@@ -70,6 +70,11 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: box-shadow var(--transition-normal);
+}
+
+.globalBar:hover {
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.12);
 }
 
 .globalBarHeader {
@@ -96,8 +101,12 @@
   color: var(--text-muted);
 }
 
-/* ── Cards ── */
-.cardsSection { display: flex; flex-direction: column; gap: var(--space-sm); }
+/* ── Cards Section ── */
+.cardsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
 
 .sectionTitle {
   font-size: 0.82rem;
@@ -107,10 +116,11 @@
   color: var(--text-muted);
 }
 
+/* ── Responsive Card Grid ── */
 .cardGrid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
 }
 
 /* ── FAB ── */
@@ -148,4 +158,84 @@
   font-size: 1.3rem;
   line-height: 1;
   font-weight: 300;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS (mobile-first)
+   ═══════════════════════════════════════════ */
+
+/* ── 480px+: wider mobile ── */
+@media (min-width: 480px) {
+  .headline { font-size: 1.5rem; }
+  .globalBar { padding: var(--space-lg); }
+}
+
+/* ── 768px+: tablet — 2 columns ── */
+@media (min-width: 768px) {
+  .page {
+    gap: var(--space-xl);
+  }
+
+  .heroRow {
+    padding-top: var(--space-md);
+  }
+
+  .headline {
+    font-size: 1.65rem;
+  }
+
+  .streakNum { font-size: 1.25rem; }
+  .streakLabel { font-size: 0.88rem; }
+
+  .globalBar {
+    padding: var(--space-lg);
+  }
+
+  .globalBarLabel { font-size: 0.9rem; }
+  .globalBarPct { font-size: 1.25rem; }
+  .globalBarSub { font-size: 0.8rem; }
+
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .sectionTitle { font-size: 0.88rem; }
+
+  .fab {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ── 1024px+: desktop — 3 columns ── */
+@media (min-width: 1024px) {
+  .page {
+    gap: var(--space-2xl);
+  }
+
+  .heroRow {
+    padding-top: var(--space-lg);
+  }
+
+  .headline { font-size: 1.85rem; }
+  .greeting { font-size: 0.88rem; }
+  .streakNum { font-size: 1.35rem; }
+
+  .globalBarLabel { font-size: 0.95rem; }
+  .globalBarPct { font-size: 1.4rem; }
+  .globalBarSub { font-size: 0.85rem; }
+
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+/* ── 1280px+: wide desktop — 4 columns if many subjects ── */
+@media (min-width: 1280px) {
+  .cardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-xl);
+  }
 }

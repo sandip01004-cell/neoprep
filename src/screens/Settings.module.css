@@ -7,10 +7,10 @@
 
 .title { font-size: 1.3rem; }
 
-/* Stats row */
+/* Stats row — 2×2 on small mobile, 4 on wider */
 .statsRow {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-sm);
 }
 
@@ -18,11 +18,19 @@
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: var(--space-sm) 4px;
+  padding: var(--space-sm) var(--space-xs);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.statChip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.15);
 }
 
 .statValue {
@@ -96,6 +104,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-sm);
+  flex-wrap: wrap;
 }
 
 .rowLabel {
@@ -180,7 +189,7 @@
   left: 50%;
   transform: translate(-50%,-50%);
   width: calc(100% - 32px);
-  max-width: 360px;
+  max-width: 400px;
   background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
@@ -204,4 +213,49 @@
   display: flex;
   gap: var(--space-sm);
   justify-content: flex-end;
+}
+
+/* ═══ Responsive ═══ */
+
+@media (min-width: 480px) {
+  .statsRow {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+
+  .statChip { padding: var(--space-md) var(--space-sm); }
+  .statValue { font-size: 1.15rem; }
+  .statLabel { font-size: 0.68rem; }
+}
+
+@media (min-width: 768px) {
+  .page { gap: var(--space-xl); }
+  .title { font-size: 1.5rem; }
+
+  .statsRow { gap: var(--space-lg); }
+  .statChip { padding: var(--space-lg) var(--space-md); }
+  .statValue { font-size: 1.3rem; }
+  .statLabel { font-size: 0.72rem; }
+
+  .sectionContent { padding: var(--space-lg); }
+  .sectionTitle { font-size: 0.85rem; }
+
+  .rowLabel { font-size: 0.95rem; }
+  .rowSub { font-size: 0.78rem; }
+  .storageHeader { font-size: 0.85rem; }
+
+  .modal {
+    max-width: 440px;
+    padding: var(--space-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .title { font-size: 1.65rem; }
+
+  .statChip { padding: var(--space-xl) var(--space-lg); }
+  .statValue { font-size: 1.5rem; }
+  .statLabel { font-size: 0.78rem; }
+
+  .sectionContent { padding: var(--space-xl); }
 }

@@ -37,7 +37,7 @@
   --border-subtle: rgba(255, 255, 255, 0.06);
   --border-glow:   rgba(124, 58, 237, 0.4);
 
-  /* Spacing */
+  /* Spacing — mobile-first base */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
@@ -67,13 +67,29 @@
   --font-body:    'Inter', system-ui, sans-serif;
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
 
-  /* Layout */
+  /* Layout — responsive */
   --bottom-nav-height: 68px;
   --top-bar-height:    60px;
-  --max-width:         480px;
-  /* IMPROVEMENT: iPhone notch / home-bar safe area */
+  --content-max-width: 1280px;
+  --content-padding:   var(--space-md);
+  /* iPhone notch / home-bar safe area */
   --safe-area-bottom:  env(safe-area-inset-bottom, 0px);
   --safe-area-top:     env(safe-area-inset-top, 0px);
+}
+
+/* ── Responsive token overrides ── */
+@media (min-width: 768px) {
+  :root {
+    --content-padding: var(--space-lg);
+    --top-bar-height: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --content-padding: var(--space-xl);
+    --top-bar-height: 68px;
+  }
 }
 
 /* ── Reset & Base ── */
@@ -186,9 +202,10 @@ input, select, textarea {
   border: 0;
 }
 
-/* ── App Layout ── */
+/* ── App Layout — Responsive ── */
 .app-shell {
-  max-width: var(--max-width);
+  width: 100%;
+  max-width: var(--content-max-width);
   margin: 0 auto;
   min-height: 100dvh;
   display: flex;
@@ -198,9 +215,10 @@ input, select, textarea {
 
 .main-content {
   flex: 1;
-  padding: var(--top-bar-height) var(--space-md) var(--bottom-nav-height);
+  padding: calc(var(--top-bar-height) + var(--space-sm)) var(--content-padding) calc(var(--bottom-nav-height) + var(--safe-area-bottom) + var(--space-sm));
   overflow-y: auto;
   overflow-x: hidden;
+  width: 100%;
 }
 
 /* ── Card Base ── */
@@ -210,6 +228,12 @@ input, select, textarea {
   border: 1px solid var(--border-subtle);
   padding: var(--space-md);
   box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: var(--space-lg);
+  }
 }
 
 /* ── Btn Base ── */
@@ -283,6 +307,21 @@ input, select, textarea {
 }
 
 .btn-full { width: 100%; }
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+  .btn-sm {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+  .btn-lg {
+    padding: 16px 32px;
+    font-size: 1.05rem;
+  }
+}
 
 /* ── Input Base ── */
 .input {
