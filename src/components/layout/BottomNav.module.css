@@ -7,7 +7,7 @@
   height: calc(var(--bottom-nav-height) + var(--safe-area-bottom));
   padding-bottom: var(--safe-area-bottom);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
   align-items: center;
   background: rgba(22, 22, 31, 0.92);
   backdrop-filter: blur(20px);

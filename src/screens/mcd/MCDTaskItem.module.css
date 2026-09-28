@@ -1,0 +1,129 @@
+.taskItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+.taskItem:active {
+  cursor: grabbing;
+}
+
+.taskItem:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.taskItem.must {
+  border-left: 3px solid #f59e0b;
+}
+
+.taskItem.can {
+  border-left: 3px solid #10b981;
+}
+
+.taskItem.dont {
+  border-left: 3px solid #f43f5e;
+}
+
+.taskItem.done {
+  opacity: 0.6;
+}
+
+.taskItem.done .text {
+  text-decoration: line-through;
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--text-muted);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.checkbox:hover {
+  border-color: var(--accent-violet-light);
+}
+
+.taskItem.must .checkbox.checked {
+  background: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.taskItem.can .checkbox.checked {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+.taskItem.dont .checkbox.checked {
+  background: #f43f5e;
+  border-color: #f43f5e;
+  font-size: 12px; /* For shield emoji */
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.text {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+  word-break: break-word;
+  transition: color 0.2s ease;
+}
+
+.meta {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.time, .duration {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.deleteBtn {
+  color: var(--text-muted);
+  opacity: 0;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.taskItem:hover .deleteBtn {
+  opacity: 1;
+}
+
+.deleteBtn:hover {
+  color: var(--accent-rose);
+  background: rgba(244, 63, 94, 0.1);
+}
+
+/* Mobile support - always show delete */
+@media (max-width: 768px) {
+  .deleteBtn {
+    opacity: 0.5;
+  }
+}

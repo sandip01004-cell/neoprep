@@ -5,6 +5,8 @@ import Dashboard from './screens/Dashboard';
 import TestVault from './screens/TestVault';
 import Settings from './screens/Settings';
 import LogSession from './screens/LogSession';
+import MCDScreen from './screens/mcd/MCDScreen';
+import { MCDProvider } from './context/MCDContext';
 import BottomNav from './components/layout/BottomNav';
 import TopBar from './components/layout/TopBar';
 import CelebrationOverlay from './components/ui/CelebrationOverlay';
@@ -34,6 +36,7 @@ function Inner() {
   const renderScreen = () => {
     switch (activeTab) {
       case 'dashboard': return <Dashboard onOpenLog={() => setLogOpen(true)} />;
+      case 'mcd':       return <MCDScreen />;
       case 'vault':     return <TestVault />;
       case 'settings':  return <Settings />;
       default:          return <Dashboard onOpenLog={() => setLogOpen(true)} />;
@@ -92,7 +95,9 @@ function Inner() {
 export default function App() {
   return (
     <AppProvider>
-      <Inner />
+      <MCDProvider>
+        <Inner />
+      </MCDProvider>
     </AppProvider>
   );
 }
