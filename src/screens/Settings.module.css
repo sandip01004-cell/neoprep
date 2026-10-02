@@ -73,6 +73,14 @@
   gap: var(--space-md);
 }
 
+/* Compact variant: no padding — child manages its own layout */
+.sectionContentCompact {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
 /* Storage bar */
 .storageBar { display: flex; flex-direction: column; gap: 6px; }
 
@@ -137,41 +145,6 @@
   background: rgba(244,63,94,0.1);
   border: 1px solid rgba(244,63,94,0.25);
   color: var(--accent-rose);
-}
-
-/* Advanced section */
-.advancedToggle { display: flex; flex-direction: column; gap: var(--space-sm); }
-
-.advancedBtn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  cursor: pointer;
-  font-family: var(--font-body);
-  text-align: left;
-  padding: 4px 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.advancedBtn:hover { color: var(--text-secondary); }
-
-.advancedPanel {
-  background: var(--bg-card);
-  border: 1px solid rgba(244,63,94,0.2);
-  border-radius: var(--radius-card);
-  padding: var(--space-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.advancedNote {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  line-height: 1.5;
 }
 
 /* Confirm modal */

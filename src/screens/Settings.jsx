@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { exportJSON, importJSON, getStorageUsedKB } from '../utils/storage';
 import { formatDate } from '../utils/date';
+import SyncSettings from '../components/sync/SyncSettings';
+import ManageSubjects from '../components/subjects/ManageSubjects';
 import styles from './Settings.module.css';
 
 export default function Settings() {
@@ -13,7 +15,6 @@ export default function Settings() {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [showImportConfirm, setShowImportConfirm] = useState(false);
   const [pendingImport, setPendingImport]  = useState(null);
-  const [showFirebase, setShowFirebase]    = useState(false);
 
   const storageKB = getStorageUsedKB();
 
@@ -140,22 +141,15 @@ export default function Settings() {
         </div>
       </Section>
 
-      {/* ── Advanced (Firebase) ── */}
-      <div className={styles.advancedToggle}>
-        <button className={styles.advancedBtn} onClick={() => setShowFirebase(v => !v)}>
-          ⚠️ Advanced settings {showFirebase ? '▲' : '▼'}
-        </button>
-        {showFirebase && (
-          <div className={styles.advancedPanel}>
-            <p className={styles.advancedNote}>
-              Firebase sync is optional and for advanced users. Provide your own Firebase config.
-              This is NOT built-in — you need a personal Firebase project.
-            </p>
-            <input className="input" placeholder="Firebase API key" disabled style={{ opacity: 0.5 }} />
-            <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Coming in a future version.</p>
-          </div>
-        )}
-      </div>
+      {/* ── Manage Subjects ── */}
+      <Section title="Subjects &amp; Goals" compact>
+        <ManageSubjects />
+      </Section>
+
+      {/* ── GitHub Sync ── */}
+      <Section title="Sync" compact>
+        <SyncSettings />
+      </Section>
 
       {/* Import confirm modal */}
       {showImportConfirm && (
@@ -184,11 +178,11 @@ export default function Settings() {
   );
 }
 
-function Section({ title, children }) {
+function Section({ title, children, compact }) {
   return (
     <div className={styles.section}>
       <h2 className={styles.sectionTitle}>{title}</h2>
-      <div className={styles.sectionContent}>{children}</div>
+      <div className={compact ? styles.sectionContentCompact : styles.sectionContent}>{children}</div>
     </div>
   );
 }

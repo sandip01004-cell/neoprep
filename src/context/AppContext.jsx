@@ -144,6 +144,62 @@ function reducer(state, action) {
       return { ...state, config: { ...state.config, subjects: action.payload } };
     }
 
+    case 'ADD_SUBJECT': {
+      return { ...state, config: { ...state.config, subjects: [...state.config.subjects, action.payload] } };
+    }
+
+    case 'RENAME_SUBJECT': {
+      // action.payload = { id, name }
+      return {
+        ...state,
+        config: {
+          ...state.config,
+          subjects: state.config.subjects.map(s =>
+            s.id === action.payload.id ? { ...s, name: action.payload.name } : s
+          ),
+        },
+      };
+    }
+
+    case 'UPDATE_SUBJECT': {
+      // action.payload = { id, changes: { ... } }
+      return {
+        ...state,
+        config: {
+          ...state.config,
+          subjects: state.config.subjects.map(s =>
+            s.id === action.payload.id ? { ...s, ...action.payload.changes } : s
+          ),
+        },
+      };
+    }
+
+    case 'DELETE_SUBJECT': {
+      // action.payload = subjectId
+      // Remove subject + scrub its entries from all day logs
+      const id = action.payload;
+      const newLogs = {};
+      for (const [date, dayLog] of Object.entries(state.logs)) {
+        const { [id]: _removed, ...rest } = dayLog;
+        // Keep date entry only if there are remaining logs for that day
+        if (Object.keys(rest).length > 0) newLogs[date] = rest;
+        else newLogs[date] = rest; // keep empty day entries for streak calc
+      }
+      return {
+        ...state,
+        config: {
+          ...state.config,
+          subjects: state.config.subjects.filter(s => s.id !== id),
+        },
+        logs: newLogs,
+      };
+    }
+
+    case 'REORDER_SUBJECTS': {
+      // action.payload = subject[] (full reordered array)
+      return { ...state, config: { ...state.config, subjects: action.payload } };
+    }
+
     case 'UPDATE_CONFIG': {
       return { ...state, config: { ...state.config, ...action.payload } };
     }

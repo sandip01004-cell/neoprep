@@ -1,0 +1,254 @@
+/* ── SyncSettings ─────────────────────────────────────────────────── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+}
+
+/* Header button */
+.headerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-md);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  transition: background var(--transition-fast);
+}
+
+.headerBtn:hover { background: rgba(255,255,255,0.03); }
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.headerTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.08em;
+  background: rgba(124,58,237,0.18);
+  color: var(--accent-violet-light);
+  border: 1px solid rgba(124,58,237,0.3);
+}
+
+.chevron {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* Status dot */
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotOn  { background: var(--accent-emerald); box-shadow: 0 0 6px rgba(16,185,129,0.6); animation: pulse-dot 2s infinite; }
+.dotOff { background: var(--text-muted); }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* Panel */
+.panel {
+  padding: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Status bar */
+.statusBar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--space-sm);
+}
+
+.statusItem {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statusLabel {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+}
+
+.statusValue {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.statusOn  { color: var(--accent-emerald); }
+.statusOff { color: var(--text-muted); }
+
+/* Error box */
+.errorBox {
+  background: rgba(244,63,94,0.1);
+  border: 1px solid rgba(244,63,94,0.3);
+  color: var(--accent-rose);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Setup form */
+.setupForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.setupNote {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.link {
+  color: var(--accent-violet-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fieldLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}
+
+.hint {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.tokenRow {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.tokenRow .input { flex: 1; }
+
+.revealBtn {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  align-self: center;
+}
+
+.revealBtn:hover { background: var(--bg-input); }
+
+.secNote {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.connectBtn {
+  margin-top: var(--space-xs);
+  align-self: stretch;
+}
+
+/* Actions (connected state) */
+.actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.resetBtn {
+  background: rgba(244,63,94,0.08);
+  color: var(--accent-rose);
+  border: 1px solid rgba(244,63,94,0.25);
+}
+
+.resetBtn:hover {
+  background: rgba(244,63,94,0.15);
+}
+
+/* Confirm dialog */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 400;
+  backdrop-filter: blur(4px);
+}
+
+.confirmBox {
+  position: fixed;
+  bottom: calc(var(--bottom-nav-height) + var(--space-lg));
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 380px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  z-index: 401;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  animation: slideUp 200ms ease forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.confirmMsg {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.confirmActions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+}
